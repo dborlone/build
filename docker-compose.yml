@@ -1,0 +1,14 @@
+version: '3'
+services:
+  api_primeira_imagem:
+    image: primeira_imagem
+    ports:
+    - 8080:8080
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+      placement:
+        constraints:
+          - node.role == manager

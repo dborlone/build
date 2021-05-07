@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  api_primeira_imagem:
+    image: primeira_imagem
+    ports:
+    - 8080:8080
+    networks:
+      - net
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+
+
+networks:
+  net:
+    driver: overlay
+    external: false
+
